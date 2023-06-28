@@ -13,7 +13,7 @@ function HeaderUserProfile({ loggedIn, onLogout }) {
   const location = useLocation();
 
   function signOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('jwt');
     onLogout();
     navigate('/signin', { replace: true });
   }

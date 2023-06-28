@@ -134,7 +134,7 @@ function App() {
       ...currentUser,
       email: userData.email,
       password: userData.password,
-      token: userData.token
+      jwt: userData.token
     });
     setLoggedIn(true);
   }
@@ -145,9 +145,9 @@ function App() {
 
   // Проверка токена в хранилище
   function checkToken() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      auth.checkToken(token)
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
         .then(userData => {
           if (userData) {
             setCurrentUser({

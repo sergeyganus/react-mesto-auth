@@ -38,19 +38,19 @@ export function authorize(email, password) {
     .then(res => res.json())
     .then(userData => {
       if (userData.token) {
-        localStorage.setItem('token', userData.token);
+        localStorage.setItem('jwt', userData.token);
         return userData;
       }
     })
 }
 
-export function checkToken(token) {
+export function checkToken(jwt) {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${jwt}`,
     }
   })
     .then(res => res.json())
