@@ -1,0 +1,9 @@
+.popup_type_gallery {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+@media screen and (max-width: 480px) {
+  .popup_type_gallery {
+    padding: 0 40px;
+  }
+}

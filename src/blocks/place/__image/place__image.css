@@ -1,0 +1,13 @@
+.place__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.place__image:hover {
+  cursor: pointer;
+}

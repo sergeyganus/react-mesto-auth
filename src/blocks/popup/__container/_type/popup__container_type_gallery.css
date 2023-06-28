@@ -1,0 +1,20 @@
+.popup__container_type_gallery {
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+  max-width: 75vw;
+  width: unset;
+  min-height: unset;
+  max-height: 75vh;
+  background-color: unset;
+  box-shadow: unset;
+  border-radius: unset;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__container_type_gallery {
+    padding: 0;
+    max-width: 100%;
+    min-height: unset;
+  }
+}

@@ -1,0 +1,9 @@
+.form__link {
+  display: block;
+  padding: 15px 0 0;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}

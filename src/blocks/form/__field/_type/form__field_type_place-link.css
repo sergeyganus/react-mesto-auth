@@ -1,0 +1,9 @@
+.form__field_type_place-link {
+  margin: 0 0 17px;
+}
+
+@media screen and (max-width: 320px) {
+  .form__field_type_place-link {
+    margin-bottom: 14px;
+  }
+}

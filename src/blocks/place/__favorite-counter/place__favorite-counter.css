@@ -1,0 +1,7 @@
+.place__favorite-counter {
+  display: block;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000;
+}

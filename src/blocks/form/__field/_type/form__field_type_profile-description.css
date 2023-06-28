@@ -1,0 +1,9 @@
+.form__field_type_profile-description {
+  margin: 0 0 17px;
+}
+
+@media screen and (max-width: 320px) {
+  .form__field_type_profile-description {
+    margin-bottom: 14px;
+  }
+}

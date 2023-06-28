@@ -1,0 +1,7 @@
+.header__button {
+  padding: 0;
+  color: #a9a9a9;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}

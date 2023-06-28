@@ -1,0 +1,14 @@
+.place__favorite-button {
+  margin: 0 0 4px 0;
+  display: block;
+  width: 22px;
+  height: 19px;
+  background: #fff url(../../../images/buttons/favorite-button.svg) no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+}
+
+.place__favorite-button:hover {
+  opacity: 0.5;
+}
