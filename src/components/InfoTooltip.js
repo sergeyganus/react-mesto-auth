@@ -1,6 +1,6 @@
 import React from "react";
-import okIcon from '../../images/icons/ok-icon.svg';
-import wrongIcon from '../../images/icons/wrong-icon.svg';
+import okIcon from '../images/icons/ok-icon.svg';
+import wrongIcon from '../images/icons/wrong-icon.svg';
 
 function InfoTooltip({ isOpen, isOk, onClose }) {
   return (

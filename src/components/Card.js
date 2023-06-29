@@ -1,5 +1,5 @@
 import React from 'react';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   // Подписываемся на контекст CurrentUserContext
@@ -25,7 +25,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   }
 
   return (
-    <li className="place" key={card._id}>
+    <li className="place">
       <img className="place__image" src={card.link} alt={card.name} title={card.name} onClick={handleClick} />
       {isOwn && <button className="place__delete-button place__delete-button_active" type="button" onClick={handleDeleteClick} />}
       <div className="place__description">

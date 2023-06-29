@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../images/logo.svg';
-import HeaderUserProfile from '../headeruserprofile/HeaderUserProfile';
+import logo from '../images/logo.svg';
+import HeaderUserProfile from './HeaderUserProfile';
 
 function Header({ loggedIn, onLogout }) {
   return (

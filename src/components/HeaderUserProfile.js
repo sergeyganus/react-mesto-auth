@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function HeaderUserProfile({ loggedIn, onLogout }) {
   // Подписываемся на контекст CurrentUserContext
@@ -8,9 +8,6 @@ function HeaderUserProfile({ loggedIn, onLogout }) {
 
   // Хук useNavigate
   const navigate = useNavigate();
-
-  // Хук useLocation
-  const location = useLocation();
 
   function signOut() {
     localStorage.removeItem('jwt');
@@ -26,10 +23,12 @@ function HeaderUserProfile({ loggedIn, onLogout }) {
           <button className="header__button" type="button" onClick={signOut}>Выйти</button>
         </div>
         :
-        <>
-          {(location.pathname === '/signup') && <NavLink to="/signin" className="header__link">Войти</NavLink>}
-          {(location.pathname === '/signin') && <NavLink to="/signup" className="header__link">Регистрация</NavLink>}
-        </>
+        <Routes>
+          <Route path="/" element={<NavLink to="/signup" className="header__link">Регистрация</NavLink>} />
+          <Route path="/signup" element={<NavLink to="/signin" className="header__link">Войти</NavLink>} />
+          <Route path="/signin" element={<NavLink to="/signup" className="header__link">Регистрация</NavLink>} />
+          <Route path="*" element={<NavLink to="/signup" className="header__link">Регистрация</NavLink>} />
+        </Routes>
       }
     </div>
   );

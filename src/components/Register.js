@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
-import ComponentWithForm from '../componentwithform/ComponentWithForm';
-import InfoTooltip from '../infotooltip/InfoTooltip';
-import * as auth from '../auth/Auth';
+import ComponentWithForm from './ComponentWithForm';
+import InfoTooltip from './InfoTooltip';
+import * as auth from '../utils/Auth';
 
 function Register({ onRegister }) {
   // Переменные состояния

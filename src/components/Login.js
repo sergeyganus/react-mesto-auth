@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import ComponentWithForm from '../componentwithform/ComponentWithForm';
-import * as auth from '../auth/Auth';
+import ComponentWithForm from './ComponentWithForm';
+import * as auth from '../utils/Auth';
 
 function Login({ onLogin }) {
   // Переменные состояния

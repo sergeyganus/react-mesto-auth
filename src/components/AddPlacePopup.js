@@ -1,9 +1,14 @@
 import React from 'react';
-import PopupWithForm from '../popupwithform/PopupWithForm';
+import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup({ isOpen, onAddPlace, onClose }) {
   const [name, setName] = React.useState('');
   const [link, setLink] = React.useState('');
+
+  function clearFormData() {
+    setName('');
+    setLink('');
+  }
 
   function handleNameChange(e) {
     setName(e.target.value);
@@ -20,10 +25,12 @@ function AddPlacePopup({ isOpen, onAddPlace, onClose }) {
       name: name,
       link: link
     });
-
-    setName('');
-    setLink('');
   }
+
+  // Хук, срабатаывающий при изменении isOpen
+  React.useEffect(() => {
+    clearFormData();
+  }, [isOpen]);
 
   return (
     <PopupWithForm

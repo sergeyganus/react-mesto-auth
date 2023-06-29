@@ -1,29 +1,25 @@
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import ProtectedRouteElement from './protectedroute/ProtectedRoute';
-import Header from './header/Header';
-import Main from './main/Main';
-import Footer from './footer/Footer';
-import PopupWithForm from './popupwithform/PopupWithForm';
-import EditProfilePopup from './editprofilepopup/EditProfilePopup';
-import EditAvatarPopup from './editavatarpopup/EditAvatarPopup';
-import AddPlacePopup from './addplacepopup/AddPlacePopup';
-import ImagePopup from './imagepopup/ImagePopup';
-import Register from './register/Register';
-import Login from './login/Login';
+import ProtectedRouteElement from './ProtectedRoute';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
+import ImagePopup from './ImagePopup';
+import Register from './Register';
+import Login from './Login';
 import defaultProfilePhoto from '../images/profile-photo.png';
 import { api } from '../utils/Api';
-import * as auth from './auth/Auth';
+import * as auth from '../utils/Auth';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-
-import './App.css';
 
 function App() {
   // Переменные состояния
   const [isEditUserPhotoPopupOpen, setIsEditUserPhotoPopupOpen] = React.useState(false);
   const [isEditUserProfilePopupOpen, setIsEditUserProfilePopupOpen] = React.useState(false);
   const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
-  const [isGetConfirmationPopupOpen, setIsGetConfirmationPopupOpen] = React.useState(false);
   const [isGalleryPopupOpen, setIsGalleryPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [cards, setCards] = React.useState([]);
@@ -47,10 +43,6 @@ function App() {
     setIsAddCardPopupOpen(true);
   }
 
-  function handleGetConfirmationClick() {
-    setIsGetConfirmationPopupOpen(true);
-  }
-
   function handleCardClick(card) {
     setSelectedCard(card);
     setIsGalleryPopupOpen(true);
@@ -60,7 +52,6 @@ function App() {
     setIsEditUserPhotoPopupOpen(false);
     setIsEditUserProfilePopupOpen(false);
     setIsAddCardPopupOpen(false);
-    setIsGetConfirmationPopupOpen(false);
     setIsGalleryPopupOpen(false);
     setSelectedCard(null);
   }
@@ -197,9 +188,15 @@ function App() {
   // Хук, срабатывающий при загрузке компонента
   React.useEffect(() => {
     checkToken();
-    getUserInfo();
-    getCards();
   }, []);
+
+  // Хук, срабатывающий при загрузке компонента
+  React.useEffect(() => {
+    if (loggedIn) {
+      getUserInfo();
+      getCards();
+    }
+  }, [loggedIn]);
 
   return (
     // Внедряем данные из currentUser с помощью провайдера контекста
@@ -240,6 +237,14 @@ function App() {
               />
             }
           />
+          <Route
+            path='*'
+            element={
+              <Login
+                onLogin={handleLogin}
+              />
+            }
+          />
         </Routes>
         {/*  Подвал сайта - Footer */}
         <Footer />
@@ -267,16 +272,6 @@ function App() {
           isOpen={isGalleryPopupOpen}
           onClose={closeAllPopups}
         />
-        {/* Модальное окно подтверждения действия - Popup */}
-        <PopupWithForm
-          name={'get-confirmation'}
-          formName={'confirmform'}
-          title={'Вы уверены?'}
-          isOpen={isGetConfirmationPopupOpen}
-          onClose={closeAllPopups}
-        >
-          <button className="form__button form__button_type_get-confirmation" type="submit">Да</button>
-        </PopupWithForm>
       </div>
     </CurrentUserContext.Provider>
   );
