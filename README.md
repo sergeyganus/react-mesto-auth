@@ -6,3 +6,9 @@
 В проекте задействованы Flexbox, CSS Grid, позиционирование и SVG. 
 
 Технологии и инструменты: HTML5, CSS3, БЭМ, JavaScript, React.
+
+## Запуск проекта
+
+`npm run start` — запускает сервер
+
+`npm run dev` — запускает сервер с hot-reload
